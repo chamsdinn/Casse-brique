@@ -22,7 +22,7 @@ let brickPadding = 5;
 let brickOffsetTop = 30;
 let brickOffsetLeft = 30;
 let score = 0;
-let numberOfTries = 5;
+let numberOfTries = 8;
 let animationId = null;
 let myMusic = document.querySelector("audio");
 
@@ -34,6 +34,8 @@ const startButton = document.getElementById("start-button");
 const resetButton = document.getElementById("restart-button");
 const showConvas = document.getElementById("myCanvas");
 const title = document.getElementById("title");
+const gameOver = document.getElementById("gameOver");
+const winMsg = document.getElementById("winMsg");
 
 let bricks = [];
 
@@ -47,11 +49,13 @@ startButton.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
   createBricks();
-  numberOfTries = 5;
+  numberOfTries = 8;
   score = 0;
   draw();
   gameStart.style.display = "none";
   resetButton.style.display = "none";
+  gameOver.style.display ="none";
+  winMsg.style.display ="none";
 });
 
 function createBricks() {
@@ -117,7 +121,12 @@ function draw() {
   drawPaddle();
   drawBricks();
   drawScore();
-  collisionDetection();
+  const collision = collisionDetection();
+  if (collision){
+    resetButton.style.display = "inline";
+
+    return;
+  }
   drawTries();
   myMusic.play();
 
@@ -137,7 +146,7 @@ function draw() {
       numberOfTries--;
       if (numberOfTries <= 0) {
         drawTries();
-        alert("GAME OVER");
+        gameOver.style.display = "inline";
         resetButton.style.display = "inline";
         cancelAnimationFrame(animationId);
         return;
@@ -152,12 +161,12 @@ function draw() {
   }
 
   if (rightPressed) {
-    paddleX += 5;
+    paddleX += 9;
     if (paddleX + paddleWidth > canvas.width) {
       paddleX = canvas.width - paddleWidth;
     }
   } else if (leftPressed) {
-    paddleX -= 5;
+    paddleX -= 9;
     if (paddleX < 0) {
       paddleX = 0;
     }
@@ -192,8 +201,11 @@ function collisionDetection() {
           b.status = 0;
           score++;
           if (score == brickRowCount * brickColumnCount) {
-            alert("You Win!");
-            document.location.reload();
+            winMsg.style.display="inline";
+            cancelAnimationFrame(animationId);
+            return true;
+            //alert("GAME OVER");
+            //document.location.reload();
           }
         }
       }

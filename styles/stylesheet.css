@@ -10,6 +10,7 @@ canvas {
     display: none; 
     margin: 0 auto; 
     border: 1px solid black;
+    position: relative;
 }
 #title{
     display: flex;
@@ -25,6 +26,16 @@ h1{
     margin: 5px;
     background-image: url("../images/003_texture-pattern-brick-street-background.jpg");
 }
+.container {
+    position: relative;
+  }
+#gameOver, #winMsg{
+    position: absolute;
+    top : 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #eeeeee;
+}
 #game-intro{
     display: flex;
     justify-content: center;
@@ -33,6 +44,14 @@ h1{
 }
 #game-intro > img{
     width: 420px;
+}
+#gameOver{
+    display: none;
+    position: absolute;
+}
+#winMsg{
+    display:none;
+    position: absolute;
 }
 #start-button {
     width: 15%;

@@ -33,6 +33,7 @@ const gameStart = document.getElementById("game-intro");
 const startButton = document.getElementById("start-button");
 const resetButton = document.getElementById("restart-button");
 const showConvas = document.getElementById("myCanvas");
+const title = document.getElementById("title");
 
 let bricks = [];
 
@@ -41,6 +42,7 @@ startButton.addEventListener("click", () => {
   draw();
   gameStart.style.display = "none";
   showConvas.style.display = "block";
+  title.style.display = "none";
 });
 
 resetButton.addEventListener("click", () => {

@@ -32,7 +32,7 @@ h1{
     align-items: center;
 }
 #game-intro > img{
-    width: 15%;
+    width: 420px;
 }
 #start-button {
     width: 15%;
@@ -76,7 +76,7 @@ h1{
         
         font-family: sans-serif;
         font-size: 20px;
-        padding: 5px 15px;
+        padding: 5px;
         text-align: center;
         text-decoration: none;
         animation: glowing 1300ms infinite;
@@ -92,4 +92,5 @@ h1{
 p{
     text-align: center;
     margin: 10px;
+    font-family: fantasy;
 }

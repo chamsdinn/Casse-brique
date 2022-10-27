@@ -51,6 +51,8 @@ resetButton.addEventListener("click", () => {
   createBricks();
   numberOfTries = 10;
   score = 0;
+  x = canvas.width / 2;
+    y = canvas.height - 30;
   draw();
   gameStart.style.display = "none";
   resetButton.style.display = "none";

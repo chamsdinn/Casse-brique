@@ -22,7 +22,7 @@ let brickPadding = 5;
 let brickOffsetTop = 30;
 let brickOffsetLeft = 30;
 let score = 0;
-let numberOfTries = 8;
+let numberOfTries = 10;
 let animationId = null;
 let myMusic = document.querySelector("audio");
 
@@ -49,7 +49,7 @@ startButton.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
   createBricks();
-  numberOfTries = 8;
+  numberOfTries = 10;
   score = 0;
   draw();
   gameStart.style.display = "none";
